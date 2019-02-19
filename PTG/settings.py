@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+# TODO Remove references to secrets.py before production
+from . import secrets
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,9 +21,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
+
+#TODO Change before implementation
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '@5s(-7@jbdu9kc)punrhi4y03ky3-@gr&yf-0xp_t3x=vc5pbm'
 
+#TODO Set to false before implementation
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -72,11 +77,26 @@ WSGI_APPLICATION = 'PTG.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+###########################################################################################################
+#                               TODO Change before production                                             #
+#    Database details are to be kept in a file named secrets.py which git will ignore, keeping account    #
+#    details offline. Name variables as seen below and assign values as string data types to work with    #
+#    the settings below. For production this information will be set via environmental variables.         #    
+###########################################################################################################
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        # Database on server
+        'NAME': secrets.dbname,
+        # Username to log into server                      
+        'USER': secrets.dbuser,
+        # Database account password
+        'PASSWORD': secrets.dbpass,
+        # URL of server
+        'HOST': secrets.dbhost,
+        # Database server port
+        'PORT': secrets.dbport,
     }
 }
 
