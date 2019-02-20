@@ -81,7 +81,10 @@ WSGI_APPLICATION = 'PTG.wsgi.application'
 #                               TODO Change before production                                             #
 #    Database details are to be kept in a file named secrets.py which git will ignore, keeping account    #
 #    details offline. Name variables as seen below and assign values as string data types to work with    #
-#    the settings below. For production this information will be set via environmental variables.         #    
+#    the settings below. For production this information will be set via environmental variables.         #
+#                                                                                                         #
+#    You will need to download psycopg2 connector to connect to database. Do this with                    #
+#                                  ' pip install psycopg2 '                                               #
 ###########################################################################################################
 
 DATABASES = {
