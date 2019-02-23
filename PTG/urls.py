@@ -20,6 +20,6 @@ from . import views
 #### This list will contain the url patterns at the PROJECT level ####
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='project-homepage'),
+    path('', views.project_home.as_view(), name='project_home'),
     path('pharmacy/', include('pharmacy.urls'))
 ]

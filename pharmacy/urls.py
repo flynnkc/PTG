@@ -18,5 +18,5 @@ from . import views
 
 #### This list will contain the url patterns at the PHARMACY APP level ####
 urlpatterns = [
-    path('', views.pharmacy_home, name='pharmacy_home')
+    path('', views.pharmacy_home.as_view(), name='pharmacy_home')
 ]

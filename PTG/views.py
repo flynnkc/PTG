@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views import View
 
-def home(request):
-    return HttpResponse('<h1>Pharmacy Homepage</h1><br><a href="/pharmacy">Pharmacy Homepage</a>')
+class project_home(View):
+    def get(self, request):
+        return render(request, 'ptg/project_home.html')

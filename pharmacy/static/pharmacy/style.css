@@ -1,0 +1,40 @@
+header {
+    padding: 20px;
+    text-align: center;
+    font-size: xx-large;
+}
+
+nav {
+    padding: 1%;
+    border-bottom-style: solid;
+    display: flex;
+    justify-content: center;
+}
+
+nav a {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    text-align: center;
+    font-size: small;
+}
+
+form {
+    text-align: center;
+    margin: 0;
+    padding: 0.5%;
+}
+
+form p {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}

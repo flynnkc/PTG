@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'pharmacy/style.css' %}">
+        <title>{% block title %} Pilane Pharmacy {% endblock title %}</title>
+    </head>
+    <header>Pilane Pharmacy</header>
+    {% block nav %}
+    <nav>
+        <a href="{% url 'project_home'%}">Home</a>
+        <a href="{% url 'pharmacy_home'%}">Pharmacy Inventory</a>
+        <a href=#>About</a>
+        <a href="/admin">Admin</a>
+        <a href=#>Login</a>
+    </nav>
+    {% endblock nav %}
+    <body>
+        {% block content %}{% endblock content %}
+    </body>
+    <footer>
+        {% block footer %}{% endblock footer %}
+        <p>&copy {% now 'Y' %} Pilane Pharmacy</p>
+    </footer>
+</html>
