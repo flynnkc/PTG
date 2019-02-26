@@ -15,11 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from . import views
+from . import views as project_views
+from django.contrib.auth import views as auth_views
 
 #### This list will contain the url patterns at the PROJECT level ####
 urlpatterns = [
+    path('', project_views.project_home.as_view(), name='project_home'),
     path('admin/', admin.site.urls),
-    path('', views.project_home.as_view(), name='project_home'),
-    path('pharmacy/', include('pharmacy.urls'))
+    path('pharmacy/', include('pharmacy.urls')),
+    path('accounts/', include('django.contrib.auth.urls'))
+    #path('login/', auth_views.LoginView.as_view(template_name='ptg/login.html'), name='login'),
+    #path('logout/', auth_views.LogoutView.as_view(template_name='ptg/logout.html'), name='logout'),
 ]

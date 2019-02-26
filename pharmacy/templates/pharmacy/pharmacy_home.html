@@ -4,6 +4,7 @@
 
 {% block content %}
 <form>
+    {% csrf_token %}
     <p>Primary Key: </p>
     <input type="text" name="first"><br>
     <p>Second Thing: </p>

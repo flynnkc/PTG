@@ -37,12 +37,21 @@ class Location(models.Model):
     phone = models.CharField(max_length=14)
 
 
-#Use barcode for the primary key on Drug model
+# Use barcode for the primary key on Drug model
 class Drug(models.Model):
     barcode = models.IntegerField(primary_key=True)
     name = models.ForeignKey(Drug_Brand, on_delete=models.CASCADE)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    location = models.ManyToManyField(Location)
     batch_lot = models.IntegerField()
     dose = models.CharField(max_length=20, blank=True)
     count = models.IntegerField()
     expiration_date = models.DateField()
+
+
+class Receive(models.Model):
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    location = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
+
+
+class Disburse(models.Model):
+    pass
