@@ -1,9 +1,11 @@
 {% extends "ptg/base.html" %}
+{# Pharmacy Homepage Template #}
 
 {% block title %} Inventory - Pilane Pharmacy {% endblock title %}
 
 {% block content %}
 <form>
+    {# csrf_token is to prevent cross site forgeries, just include on forms django will handle the rest #}
     {% csrf_token %}
     <p>Primary Key: </p>
     <input type="text" name="first"><br>

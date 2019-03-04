@@ -1,4 +1,6 @@
 {% extends "ptg/base.html" %}
+{# Default login page. The default structure of django projects will look here first for this template. #}
+{# This content was copied from a default template from the django project #}
 
 {% block content %}
 
@@ -32,6 +34,7 @@
 <input type="hidden" name="next" value="{{ next }}">
 </form>
 
+{# Project may not need a password reset #}
 {# Assumes you setup the password_reset view in your URLconf #}
 {# <p><a href="{% url 'password_reset' %}">Lost password?</a></p> #}
 

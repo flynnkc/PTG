@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
+# This file is for models
+# Reference https://docs.djangoproject.com/en/2.1/topics/db/models/
 class Drug_Generic(models.Model):
     name = models.CharField(primary_key=True, max_length=50)
     schedule = models.IntegerField(null=True, blank=True)

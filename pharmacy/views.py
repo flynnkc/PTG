@@ -3,7 +3,7 @@ from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
-# Create your views here.
+# Decorator sets login required on GET requests
 @method_decorator(login_required, name='get')
 class pharmacy_home(View):
 

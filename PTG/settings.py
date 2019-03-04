@@ -36,7 +36,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'pharmacy.apps.PharmacyConfig',
+    'pharmacy.apps.PharmacyConfig', # Apps must be listed here from the apps.py file
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -93,7 +93,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         # Database on server
         'NAME': secrets.dbname,
-        # Username to log into server                      
+        # Username to log into server. Format username@domain.                      
         'USER': secrets.dbuser,
         # Database account password
         'PASSWORD': secrets.dbpass,
@@ -143,6 +143,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Default login/logout/redirect pages. References in views as name='Example'
 LOGIN_REDIRECT_URL = 'project_home'
 
 #LOGIN_URL = 'login'

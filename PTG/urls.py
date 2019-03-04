@@ -22,8 +22,6 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('', project_views.project_home.as_view(), name='project_home'),
     path('admin/', admin.site.urls),
-    path('pharmacy/', include('pharmacy.urls')),
-    path('accounts/', include('django.contrib.auth.urls'))
-    #path('login/', auth_views.LoginView.as_view(template_name='ptg/login.html'), name='login'),
-    #path('logout/', auth_views.LogoutView.as_view(template_name='ptg/logout.html'), name='logout'),
+    path('pharmacy/', include('pharmacy.urls')), # include() Directs search to urls.py in pharmacy app folder
+    path('accounts/', include('django.contrib.auth.urls')), # Directs to default auth module url structure
 ]
