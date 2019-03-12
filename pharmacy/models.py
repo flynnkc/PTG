@@ -9,7 +9,6 @@ class Drug_Generic(models.Model):
 
 
 class Manufacturer_Company(models.Model):
-    manufacturer_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=100)
     address = models.TextField(null=True, blank=True)
     phone = models.CharField(max_length=14, null=True, blank=True)
