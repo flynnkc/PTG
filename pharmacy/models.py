@@ -7,11 +7,17 @@ class Drug_Generic(models.Model):
     name = models.CharField(primary_key=True, max_length=50)
     schedule = models.IntegerField(null=True, blank=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Manufacturer_Company(models.Model):
     name = models.CharField(max_length=100)
     address = models.TextField(null=True, blank=True)
     phone = models.CharField(max_length=14, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Drug_Brand(models.Model):
@@ -20,6 +26,9 @@ class Drug_Brand(models.Model):
     manufacturer = models.ForeignKey(Manufacturer_Company, on_delete=models.CASCADE)
     licence = models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
 
 class Location(models.Model):
     name = models.CharField(max_length=80)
@@ -27,6 +36,9 @@ class Location(models.Model):
     is_clinic = models.BooleanField(default=False)
     address = models.TextField(null=True, blank=True)
     phone = models.CharField(max_length=14)
+
+    def __str(self):
+        return self.name
 
 
 # Use barcode for the primary key on Drug model

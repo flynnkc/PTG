@@ -108,5 +108,4 @@ venv.bak/
 
 # custom
 secrets.py
-
 .DS_Store
