@@ -36,13 +36,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'pharmacy.apps.PharmacyConfig', # Apps must be listed here from the apps.py file
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Best practice is to add our apps below default apps
+    'pharmacy.apps.PharmacyConfig', # Apps must be listed here from the apps.py file
 ]
 
 MIDDLEWARE = [
