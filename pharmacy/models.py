@@ -22,7 +22,7 @@ class Drug_Brand(models.Model):
     manufacturer = models.ForeignKey(Manufacturer_Company, on_delete=models.CASCADE)
     license = models.IntegerField()
     dose = models.TextField(null=True, blank=True)
-    container_count = models.IntegerField(null=True, blank=True)
+    pack_size = models.IntegerField(null=True, blank=True)
 
 
     def __str__(self):
