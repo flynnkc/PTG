@@ -5,9 +5,9 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="{% static 'pharmacy/style.css' %}">
-        <title>{% block title %} Pilane Pharmacy {% endblock title %}</title>
+        <title>{% block title %} Tantalum Health {% endblock title %}</title>
     </head>
-    <header>Pilane Pharmacy</header>
+    <header>Tantalum Health</header>
     {% block nav %}
     <nav>
         <a href="{% url 'project_home' %}">Home</a>
@@ -31,6 +31,6 @@
     </body>
     <footer>
         {% block footer %}{% endblock footer %}
-        <p>&copy {% now 'Y' %} Pilane Pharmacy</p>
+        <p>&copy {% now 'Y' %} Tantalum Health</p>
     </footer>
 </html>
