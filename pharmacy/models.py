@@ -57,7 +57,7 @@ class Order_Detail(models.Model):
         unique_together = (('order_id','barcode'),)
     order_id = models.IntegerField(primary_key=True)
     barcode = models.IntegerField()
-    count = models.IntegerField()
+    count = models.IntegerField(null=True, blank=True)
 
 class Batch(models.Model):
     drug_brand = models.ForeignKey(Drug_Brand, on_delete=models.CASCADE)
@@ -76,4 +76,4 @@ class Batch_Location(models.Model):
         unique_together = (('batch_id','location_id'),)
     batch_id = models.IntegerField(primary_key=True)
     location_id = models.IntegerField()
-    count = models.IntegerField()
+    count = models.IntegerField(null=True, blank=True)
