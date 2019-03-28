@@ -24,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('pharmacy/', include('pharmacy.urls')), # include() Directs search to urls.py in pharmacy app folder
     path('accounts/', include('django.contrib.auth.urls')), # Directs to default auth module url structure
+    path('about/', project_views.pharmacy_about.as_view(), name='project_about')
 ]
