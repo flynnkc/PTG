@@ -82,6 +82,7 @@ class Batch_Location(models.Model):
 
 
 ##### Model Forms Classes #####
+
 """
 class SearchForm(ModelForm):
     class Meta:
