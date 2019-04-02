@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import ModelForm
 
 class Drug_Generic(models.Model):
     name = models.CharField(primary_key=True, max_length=50)
@@ -17,7 +18,8 @@ class Manufacturer_Company(models.Model):
         return self.name
 
 class Drug_Brand(models.Model):
-    name = models.CharField(primary_key=True, max_length=50)
+    barcode = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=50)
     generic_name = models.ForeignKey(Drug_Generic, on_delete=models.CASCADE)
     manufacturer = models.ForeignKey(Manufacturer_Company, on_delete=models.CASCADE)
     license = models.IntegerField()
@@ -77,3 +79,12 @@ class Batch_Location(models.Model):
     batch_id = models.IntegerField(primary_key=True)
     location_id = models.IntegerField()
     count = models.IntegerField(null=True, blank=True)
+
+
+##### Model Forms Classes #####
+"""
+class SearchForm(ModelForm):
+    class Meta:
+        model = Search
+        fields = ['name']
+"""
