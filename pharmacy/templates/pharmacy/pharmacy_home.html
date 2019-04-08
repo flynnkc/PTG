@@ -4,16 +4,15 @@
 {% block title %} Inventory - Tantulum Health {% endblock title %}
 
 {% block content %}
-<form>
-    {# csrf_token is to prevent cross site forgeries, just include on forms django will handle the rest #}
-    {% csrf_token %}
-    <p>Primary Key: </p>
-    <input type="text" name="first"><br>
-    <p>Second Thing: </p>
-    <input type="text" name="second">
-    <br><br>
-    <input type="submit">
-</form> 
+    <div class="main">
+    {% block main_area %}
+        <h2>Place Documentation Here</h2>
+        <br>
+        <p><em>Maybe put a message around here</em></p>
+        <br>
+        <p>This area is to show the users how to operate the system</p>
+    {% endblock main_area %}
+    </div>
 {% block sidenav %}
     <div class="side-nav">
         <a href="#">Lookup</a>

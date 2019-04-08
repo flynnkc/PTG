@@ -1,5 +1,5 @@
-from django.forms import ModelForm
-from pharmacy.models import Drug_Brand
+from django.forms import Form, ModelChoiceField
+from pharmacy.models import Drug_Brand, Location
 """
 class SearchForm(ModelForm):
 
@@ -12,3 +12,7 @@ class SearchForm(ModelForm):
         search = Search.objects.get(pk=1)
         form = SearchForm(instance = Search)
 """
+
+class ExpiringMedsForm(Form):
+    query = Location.objects.all()
+    name = ModelChoiceField(query, empty_label=None)

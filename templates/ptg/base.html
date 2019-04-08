@@ -11,10 +11,11 @@
     {% block nav %}
     <nav>
         <a href="{% url 'project_home' %}">Home</a>
-        <a href="{% url 'pharmacy_home' %}">Pharmacy Inventory</a>
+        <a href="{% url 'pharmacy_home' %}">Inventory</a>
         <a href="{% url 'project_about' %}">About</a>
-        <a href="/admin">Admin</a>
+        <a href="{% url 'pharmacy_reports' %}">Reports</a>
         {% if user.is_authenticated %}
+            <a href="/admin">Admin</a>
             <a href="{% url 'logout' %}">Logout</a>
         {% else %}
             <a href="{% url 'login' %}">Login</a>

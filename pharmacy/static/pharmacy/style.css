@@ -39,6 +39,10 @@ form p {
     margin-bottom: 2px;
 }
 
+.main {
+    margin-left: 12%;
+}
+
 .side-nav {
     width: 10%;
     position: fixed;
@@ -52,6 +56,6 @@ form p {
 .side-nav a {
     padding: 20% 1% 1% 6%;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 24px;
     display: block;
 }

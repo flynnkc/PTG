@@ -50,16 +50,19 @@ class Order(models.Model):
     state = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.state
+        return str(self.id)
 
 #ORDER_DETAIL ASSOCIATIVE ENTITY ATTEMPT
 # https://stackoverflow.com/questions/28712848/composite-primary-key-in-django/28712960#28712960
+
 class Order_Detail(models.Model):
-    class Meta:
-        unique_together = (('order_id','barcode'),)
-    order_id = models.IntegerField(primary_key=True)
-    barcode = models.IntegerField()
+    order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
+    barcode = models.ForeignKey(Drug_Brand, on_delete=models.CASCADE)
     count = models.IntegerField(null=True, blank=True)
+
+    def __str__(self):
+        self.order_detail_name = 'Order: ' + str(self.order_id) + ' Barcode: ' + str(self.barcode)
+        return self.order_detail_name
 
 class Batch(models.Model):
     drug_brand = models.ForeignKey(Drug_Brand, on_delete=models.CASCADE)
@@ -69,16 +72,18 @@ class Batch(models.Model):
     batch_size = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
-        return self.drug_brand
+        return (str(self.drug_brand) + " Expiration: " + str(self.expiration_date))
 
 #Batch_Location ASSOCIATIVE ENTITY ATTEMPT
 # https://stackoverflow.com/questions/28712848/composite-primary-key-in-django/28712960#28712960
 class Batch_Location(models.Model):
-    class Meta:
-        unique_together = (('batch_id','location_id'),)
-    batch_id = models.IntegerField(primary_key=True)
-    location_id = models.IntegerField()
+    batch_id = models.ForeignKey(Batch, on_delete=models.CASCADE)
+    location_id = models.ForeignKey(Location, on_delete=models.CASCADE)
     count = models.IntegerField(null=True, blank=True)
+
+    def __str__(self):
+        self.batch_loc_name = 'Batch: ' + str(self.batch_id) + ' Location: ' + str(self.location_id)
+        return self.batch_loc_name
 
 
 ##### Model Forms Classes #####
