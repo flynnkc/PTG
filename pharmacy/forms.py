@@ -1,5 +1,5 @@
-from django.forms import Form, ModelChoiceField
-from pharmacy.models import Drug_Brand, Location
+from django.forms import Form, ModelForm, ModelChoiceField
+from pharmacy.models import Location, Order
 """
 class SearchForm(ModelForm):
 
@@ -14,5 +14,11 @@ class SearchForm(ModelForm):
 """
 
 class ExpiringMedsForm(Form):
-    query = Location.objects.all()
-    name = ModelChoiceField(query, empty_label=None)
+    query = Location.objects.all() # Query to grab all instances of Location
+    name = ModelChoiceField(query, empty_label='All', label='Location Name', required=False)
+
+
+class OrderLookupForm(ModelForm):
+    class Meta:
+        model = Order
+        fields = ['location_from', 'location_to', 'user', 'date_time', 'state'] # OR __all__

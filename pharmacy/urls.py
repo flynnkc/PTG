@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from .views import pharmacy_home, BatchListView, ReportsHome, ExpiringMedsReport
+from .views import pharmacy_home, BatchListView, ReportsHome, ExpiringMedsReport, OrderListView
 
 #### This list will contain the url patterns at the PHARMACY APP level ####
 urlpatterns = [
@@ -22,4 +22,5 @@ urlpatterns = [
     path('batchlist/', BatchListView.as_view(), name='pharmacy_batches'),
     path('reports/', ReportsHome.as_view(), name='pharmacy_reports'),
     path('reports/ex_med_report/', ExpiringMedsReport.as_view(), name='report_expiring'),
+    path('lookup/', OrderListView.as_view(), name='pharmacy_order_lookup'),
 ]

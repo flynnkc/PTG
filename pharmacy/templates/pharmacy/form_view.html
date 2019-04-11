@@ -7,15 +7,19 @@
         <h2>{{ header }}</h2>
         <form action="" method="post">
             {% csrf_token %}
-            {{ form.as_table }}
-            <br><input type="submit" value="Submit">
+            {{ form.as_p }}
+            <br>
+            <input type="submit" value="Submit">
         </form>
     {% endif %}
     {% if inventories %}
-        <li>
-        {% for inventory in inventories %}
-            <ul>{{ inventory }}</ul>
-        {% endfor %}
-        </li>
+        <div class="list-table">
+        <table>
+            <tr><th>Batch ID</th><th>Drug</th><th>Expiration</th><th>Location</th><th>Count</th></tr>
+                {% for inventory in inventories %}
+                    <tr><td>{{ inventory.batch_id.id }}</td><td>{{ inventory.batch_id.drug_brand }}</td><td>{{ inventory.batch_id.expiration_date }}</td><td>{{ inventory.location_id }}</td><td>{{ inventory.count }}</td></tr>
+                {% endfor %}
+        </table>
+        </div>
     {% endif %}
 {% endblock main_area %}
