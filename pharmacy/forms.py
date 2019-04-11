@@ -16,3 +16,7 @@ class SearchForm(ModelForm):
 class ExpiringMedsForm(Form):
     query = Location.objects.all()
     name = ModelChoiceField(query, empty_label=None)
+
+class AddInventoryForm(Form):
+    query = Location.objects.all()
+    name = ModelChoiceField(query, empty_label=None)

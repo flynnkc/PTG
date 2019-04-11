@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin # Subclass to require 
 from django.views.generic import ListView # Generic List View
 from .models import Batch, Location # Import model for Batch List View and Expiring List View
 from .forms import ExpiringMedsForm # Form for Expiring Meds Report
-
+from .forms import AddInventoryForm
 
 class pharmacy_home(LoginRequiredMixin, View):
 
@@ -61,3 +61,41 @@ class BatchListView(LoginRequiredMixin, ListView):
     model = Batch
 
     template_name = 'pharmacy/list_view.html'
+
+class AddInventory(LoginRequiredMixin, ListView):
+    template_name = 'pharmacy/form_view.html'
+
+    def get(self, request):
+
+        form = AddInventoryForm()
+
+        context = {
+            'title': 'Expiring Medicine Report',
+            'header': 'Medication Expiring Within 120 Days',
+            'form': form,
+        }
+        return render(request, self.template_name, context=context)
+
+    def post(self, request):
+        form = AddInventoryForm()
+
+        if request.method == 'POST':
+            form = AddInventoryForm(request.POST)
+            if form.is_valid():
+
+                
+                context = {
+                    'title': 'Test',
+                    'header': 'Thanks!',
+                    'form': form,
+                }
+
+                return render(request, self.template_name, context=context)
+
+            else:
+                context = {
+                    'title': 'Expiring Medicine Report',
+                    'header': 'Something went wrong. Sorry!',
+                    'form': form,
+                }
+                return render(request, self.template_name, context=context)
