@@ -29,14 +29,33 @@ footer p {
 }
 
 form {
-    text-align: center;
     margin: 0;
-    padding: 0.5%;
+    padding: 2%;
 }
 
 form p {
     margin-top: 2px;
     margin-bottom: 2px;
+}
+
+table {
+    border: 1px solid black;
+    border-spacing: 2%;
+    width: 80%;
+}
+
+th {
+    border: 1px solid black;
+    padding: 1%;
+}
+
+td {
+    border: 1px solid black;
+    padding: 1%;
+}
+
+.main {
+    margin-left: 12%;
 }
 
 .side-nav {
@@ -52,6 +71,6 @@ form p {
 .side-nav a {
     padding: 20% 1% 1% 6%;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 24px;
     display: block;
 }

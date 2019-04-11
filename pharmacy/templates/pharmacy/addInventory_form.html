@@ -1,0 +1,21 @@
+{% extends 'pharmacy/reports_home.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block main_area %}
+    {% if form %}
+        <h2>{{ header }}</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <br><input type="submit" value="Submit">
+        </form>
+    {% endif %}
+    {% if inventories %}
+        <li>
+        {% for inventory in inventories %}
+            <ul>{{ inventory }}</ul>
+        {% endfor %}
+        </li>
+    {% endif %}
+{% endblock main_area %}

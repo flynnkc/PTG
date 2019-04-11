@@ -1,0 +1,10 @@
+{% extends 'pharmacy/pharmacy_home.html' %}
+
+{% block main_area %}
+    <h2>Batches</h2>
+    <ul>
+        {% for object in object_list %}
+            <li>{{ object.drug_brand }}, {{ object.expiration_date }}, {{ object.batch_size }}</li>
+        {% endfor %}
+    </ul>
+{% endblock main_area %}

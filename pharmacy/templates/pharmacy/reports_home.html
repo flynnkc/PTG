@@ -1,0 +1,11 @@
+{% extends "pharmacy/pharmacy_home.html" %}
+{# Reports Template #}
+
+{% block title %}Reports - Tantulum Health{% endblock title %}
+
+{% block sidenav %}
+    <div class="side-nav">
+        <a href="#">Inventory Report</a>
+        <a href="{% url 'report_expiring' %}">Expiring Medications</a>
+    </div>
+{% endblock sidenav %}
