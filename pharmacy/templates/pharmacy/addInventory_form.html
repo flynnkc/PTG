@@ -1,4 +1,4 @@
-{% extends 'pharmacy/reports_home.html' %}
+{% extends 'pharmacy/pharmacy_home.html' %}
 
 {% block title %}{{ title }}{% endblock title %}
 
@@ -11,11 +11,49 @@
             <br><input type="submit" value="Submit">
         </form>
     {% endif %}
-    {% if inventories %}
-        <li>
-        {% for inventory in inventories %}
-            <ul>{{ inventory }}</ul>
+    
+    {% if addInventory1 %}
+    <table>
+        <tr><td>Barcode</td><td>Drug Name</td><td>Active Ingredient</td><td>Dose</td><td>Pack Size</td></tr>
+        
+            <tr><td>{{ addInventory1.barcode }}</td>
+            <td>{{ addInventory1.name }}</td>
+            <td>{{ addInventory1.generic_name }}</td>
+            <td>{{ addInventory1.dose }}</td>
+            <td>{{ addInventory1.pack_size }}</td></tr>
+        </table>
+        
+
+        {% if form1 %}
+        <h2>{{ header }}</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form1.as_table }}
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+
+        
+        {% endif %}
+        
+
+    {% endif %}
+    
+
+
+    {% if addInventory %}
+    <div class="list-table">
+        <table>
+        <tr><td>Barcode</td><td>Drug Name</td><td>Active Ingredient</td><td>Dose</td><td>Pack Size</td></tr>
+        {% for drug in addInventory %}
+            <tr><td>{{ drug.barcode }}</td>
+            <td>{{ drug.name }}</td>
+            <td>{{ drug.generic_name }}</td>
+            <td>{{ drug.dose }}</td>
+            <td>{{ drug.pack_size }}</td></tr>
+
         {% endfor %}
-        </li>
+        </table>
+    </div>
     {% endif %}
 {% endblock main_area %}

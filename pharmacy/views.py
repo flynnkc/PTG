@@ -3,9 +3,9 @@ from django.shortcuts import render # Render shortcut, very useful
 from django.views import View # Generic View
 from django.contrib.auth.mixins import LoginRequiredMixin # Subclass to require login to view
 from django.views.generic import ListView # Generic List View
-from .models import Batch, Location, Batch_Location # Import model for Batch List View and Expiring List View
-from .forms import ExpiringMedsForm # Form for Expiring Meds Report
-from .forms import AddInventoryForm
+from .models import Batch, Location, Batch_Location, Drug_Brand # Import model for Batch List View and Expiring List View
+from .forms import ExpiringMedsForm, AddInventoryForm, OrderLookupForm, AddInventoryForm2 # Form for Expiring Meds Report
+
 
 class pharmacy_home(LoginRequiredMixin, View):
 
@@ -94,39 +94,65 @@ class BatchListView(LoginRequiredMixin, ListView):
     template_name = 'pharmacy/list_view.html'
 
 class AddInventory(LoginRequiredMixin, ListView):
-    template_name = 'pharmacy/form_view.html'
+    template_name = 'pharmacy/addInventory_form.html'
 
     def get(self, request):
 
         form = AddInventoryForm()
+        form1 = AddInventoryForm2()
+        
 
         context = {
-            'title': 'Expiring Medicine Report',
-            'header': 'Medication Expiring Within 120 Days',
+            'title': 'Add/Update Inventory',
+            'header': 'Add/Update Inventory',
             'form': form,
         }
         return render(request, self.template_name, context=context)
 
     def post(self, request):
         form = AddInventoryForm()
-
+        form1 = AddInventoryForm2()
         if request.method == 'POST':
             form = AddInventoryForm(request.POST)
+            form1 = AddInventoryForm2(request.POST)
             if form.is_valid():
 
+                form.cleaned_data['barcode']
+
+                addInventory_query = Drug_Brand.objects.get(barcode = form.cleaned_data['barcode'])
                 
                 context = {
-                    'title': 'Test',
-                    'header': 'Thanks!',
-                    'form': form,
+                    'title': 'Enter a barcode',
+                    'header': 'Add Inventory - %s' % form.cleaned_data['barcode'],
+                    'form': form, 
+                    'form1': form1,
+                    'addInventory1': addInventory_query,
                 }
-
                 return render(request, self.template_name, context=context)
+            
+            if form1.is_valid():
+                form.cleaned_data['location']
 
-            else:
+                location_query = Location.objects.get(name = form.cleaned_data['location'])
+
                 context = {
-                    'title': 'Expiring Medicine Report',
-                    'header': 'Something went wrong. Sorry!',
-                    'form': form,
+                    'title': 'Select Your Location',
+                    'header': 'Location - %s' % form.cleaned_data['location'],
+                    'form1': form1,
+                    'addInventory2': location_query,
                 }
                 return render(request, self.template_name, context=context)
+
+class OrderListView(LoginRequiredMixin, View):
+    template_name = 'pharmacy/form_view.html'
+
+    def get(self, request):
+        form = OrderLookupForm()
+
+        context = {
+            'title': 'Order Lookup',
+            'header': 'Please enter the order information',
+            'form': form,
+        }
+
+        return render(request, self.template_name, context)
