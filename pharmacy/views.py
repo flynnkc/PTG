@@ -7,6 +7,7 @@ from .models import Batch, Location, Batch_Location, Drug_Brand # Import model f
 from .forms import ExpiringMedsForm, AddInventoryForm, OrderLookupForm, AddInventoryForm2 # Form for Expiring Meds Report
 
 
+
 class pharmacy_home(LoginRequiredMixin, View):
 
     def get(self, request):
@@ -94,7 +95,9 @@ class BatchListView(LoginRequiredMixin, ListView):
     template_name = 'pharmacy/list_view.html'
 
 class AddInventory(LoginRequiredMixin, ListView):
+
     template_name = 'pharmacy/addInventory_form.html'
+
 
     def get(self, request):
 

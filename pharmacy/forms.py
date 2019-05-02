@@ -29,7 +29,4 @@ class AddInventoryForm(Form):
 class AddInventoryForm2(Form):
     query = Location.objects.all()
     location = ModelChoiceField(query, empty_label='Please Select Your Location', label='Location Name', required = True)
-"""
-class AddInventoryForm3(Form):
-    query = 
-"""
+
